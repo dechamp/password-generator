@@ -6,9 +6,9 @@
 (function (root) {
 
   var localName, consonant, letter, password, vowel;
-  letter = /[a-zA-Z]$/;
-  vowel = /[aeiouAEIOU]$/;
-  consonant = /[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ]$/;
+  letter = /[a-z]$/i;
+  vowel = /[aeiou]$/i;
+  consonant = /[bcdfghjklmnpqrstvwxyz]$/i;
 
 
   // Defines the name of the local variable the passwordGenerator library will use
@@ -16,7 +16,7 @@
   // by your application and you want a different name. For example:
   //    // Declare before including the passwordGenerator library
   //    var localPasswordGeneratorLibraryName = 'pass';
-  localName = root.localPasswordGeneratorLibraryName || "generatePassword",
+  localName = root && root.localPasswordGeneratorLibraryName || "generatePassword",
 
   password = function (length, memorable, pattern, prefix) {
     var char = "", n, i, validChars = [];
@@ -112,4 +112,4 @@
   }
 
   // Establish the root object, `window` in the browser, or `global` on the server.
-}(this));
+}(global || window));
